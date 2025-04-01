@@ -1,0 +1,24 @@
+.post-title{
+    display: block;
+}
+.new-post{
+    width: 200px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.post{
+    width: 200px;
+    display: flex;
+    gap: 20px;
+}
+.lenta{
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 200px;
+}
+.blog{
+    display: flex;
+}
