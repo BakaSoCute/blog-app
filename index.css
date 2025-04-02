@@ -9,8 +9,7 @@
 }
 .post{
     width: 200px;
-    display: flex;
-    gap: 20px;
+    margin: 0;
 }
 .lenta{
     padding-left: 20px;
@@ -21,4 +20,8 @@
 }
 .blog{
     display: flex;
+}
+.error{
+    display: block;
+    color: red;
 }
