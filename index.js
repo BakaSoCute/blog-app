@@ -6,9 +6,12 @@ const buttonNote = document.getElementById("post-button");
 const postNode = document.getElementById("post");
 const ErorText = document.getElementById("error")
 
+
 buttonNote.addEventListener("click", function() {
     const postFromUser = getPostFromUser();
     let eror = ErorText;
+    const titleLengthError = 10;
+    const textLengthError = 20;
 
     if (postFromUser.title === "") {
         eror.innerHTML = "введите название"
@@ -18,10 +21,19 @@ buttonNote.addEventListener("click", function() {
         eror.innerHTML = "введите текст"
         return
     }
+    if (postFromUser.title.length > titleLengthError) {
+        eror.innerHTML = "длина названия не может превышать 100 символов"
+        return
+    }
+    if (postFromUser.text.length > textLengthError) {
+        eror.innerHTML = "длина текста не может превышать 100 символов"
+        return
+    }
     eror.innerHTML = "";
     addPost(postFromUser);
     renderPosts();
 });
+
 
 function getPostFromUser() {
     const title = inputNote.value;
