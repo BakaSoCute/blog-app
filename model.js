@@ -1,18 +1,37 @@
 class Model {
     constructor({onPostsChanged}) {
         this.posts = [];
+        this.isError = false;
         this.onPostsChanged = onPostsChanged;
     }
-    addPost (title, description) {
-        this.posts.push({
-            title,
-            description,
-            timestamp: Date.now()
-        })
+    addPost (title, body) {
+        if (this._isPostValid(title)) {
+            this.isError = false;
+        
 
-        this.onPostsChanged(this.posts)
+
+            this.posts.push({
+                title,
+                body,
+                timestamp: Date.now()
+            })
+        } else {
+            this.isError = true;
+        }
+
+        this.onPostsChanged(this.posts, this.isError)
     }
+
+    setPosts(posts) {
+        this.posts = posts;
+        this.onPostsChanged(this.posts, this.isError)
+    }
+
     getPosts() {
         return this.posts;
+    }
+
+    _isPostValid(title) {
+        return title.length < 100;
     }
 }

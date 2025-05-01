@@ -2,23 +2,29 @@ class View {
     constructor({onNewPost}) {
         this.postsNode = document.getElementById("posts")
         this.titleInputNode = document.getElementById("title")
-        this.descriptionInputNode = document.getElementById("description")
+        this.bodyInputNode = document.getElementById("body")
         this.btnNode = document.getElementById("button")
+        this.errorNode = document.getElementById("error")
 
         this.onNewPost = onNewPost;
 
         this.btnNode.addEventListener("click", this.handleBtnClick);
     }
 
-    renderPosts(posts) {
+    render(posts, isError) {
         this.postsNode.innerHTML = "";
+        this.errorNode.innerText = "";
+
+        if (isError) {
+            this.errorNode.innerText = "Ошибка ввода"
+        }
 
         posts.forEach(post => {
             this.postsNode.innerHTML += `
                 <div>
                     <p>${this._buildDateString(post.timestamp)}</p>
                     <p>${post.title}</p>
-                    <p>${post.description}</p>
+                    <p>${post.body}</p>
                 </div>
             `;
         });
@@ -26,9 +32,9 @@ class View {
 
     handleBtnClick = () => {
         const title = this.titleInputNode.value;
-        const description = this.descriptionInputNode.value;
+        const body = this.bodyInputNode.value;
 
-        this.onNewPost(title, description);
+        this.onNewPost(title, body);
     }
 
     _buildDateString(timestamp) {
