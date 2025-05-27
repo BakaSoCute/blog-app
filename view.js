@@ -1,9 +1,9 @@
 class View {
     constructor({onNewPost}) {
-        this.postsNode = document.getElementById("posts")
-        this.titleInputNode = document.getElementById("title")
-        this.bodyInputNode = document.getElementById("body")
-        this.btnNode = document.getElementById("button")
+        this.postsNode = document.getElementById("post")
+        this.titleInputNode = document.getElementById("post-input")
+        this.bodyInputNode = document.getElementById("post_input_text")
+        this.btnNode = document.getElementById("post-button")
         this.errorNode = document.getElementById("error")
 
         this.onNewPost = onNewPost;
